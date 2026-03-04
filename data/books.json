@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Book 1 title test",
+      "author": "Author of book nr 1",
+      "category": "Fantasy",
+      "price": 50,
+      "cover": "https://placehold.co/400x600/orange/white",
+      "reserved": false
+    },
+    {
+      "id": 2,
+      "title": "Book 2 title search",
+      "author": "Author of book nr 2",
+      "category": "Mystery",
+      "price": 40,
+      "cover": "https://placehold.co/400x600/blue/white",
+      "reserved": false
+    }
+  ]
+}
