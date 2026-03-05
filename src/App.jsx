@@ -22,24 +22,24 @@ function App() {
   );
 
   return (
-    <React.Fragment>
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={<HomePage books={books} setBooks={setBooks} />}
-        ></Route>
+    <>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage books={books} setBooks={setBooks} />}
+          ></Route>
 
-        <Route
-          path="/addbook"
-          element={<AddBook books={books} setBooks={setBooks} />}
-        >
-          <Route path="/addbook/:bookid" element={<EditBook />} />
-        </Route>
-      </Routes>
-      <Footer />
-      <Toaster position="top-center" />
-    </React.Fragment>
+          <Route
+            path="/addbook"
+            element={<AddBook books={books} setBooks={setBooks} />}
+          >
+            <Route path="/addbook/:bookid" element={<EditBook />} />
+          </Route>
+        </Routes>
+        <Footer />
+        <Toaster position="top-center" />
+    </>
   );
 }
 

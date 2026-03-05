@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const updateBook = async (id, data) => {
-  console.log(data)
   const response = await axios.patch(`${API_URL}/${id}`, data);
   return response.data;
 };

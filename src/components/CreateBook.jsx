@@ -46,7 +46,7 @@ const CreateBook = () => {
     if(response){
       reset();
       navigate("/");
-      toast.success("yeeee")
+      toast.success("Book added successfully")
     }
   };
 

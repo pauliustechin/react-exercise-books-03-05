@@ -3,9 +3,9 @@
     {
       "id": "1",
       "title": "Fantasy Book",
-      "author": "Book1 Author",
+      "author": "Book Authorzzzz",
       "category": "Fantasy",
-      "price": 55,
+      "price": "185",
       "cover": "https://placehold.co/400x600/blue/white",
       "reserved": false
     },
@@ -15,17 +15,17 @@
       "author": "Book Author",
       "category": "Mystery",
       "price": 40,
-      "cover": "https://placehold.co/400x600/blue/white",
-      "reserved": false
+      "cover": "https://placehold.co/400x600/green/white",
+      "reserved": true
     },
     {
       "id": "3",
       "title": "Romance Book",
-      "author": "Book3 Author",
+      "author": "Book Author",
       "category": "Romance",
-      "price": 45,
-      "cover": "https://placehold.co/400x600/green/white",
-      "reserved": false
+      "price": "69",
+      "cover": "https://placehold.co/400x600/yellow/white",
+      "reserved": true
     },
     {
       "id": "4",
@@ -34,16 +34,16 @@
       "category": "Mystery",
       "price": 60,
       "cover": "https://placehold.co/400x600/purple/white",
-      "reserved": false
+      "reserved": true
     },
     {
       "id": "5",
       "title": "Romance Book2",
-      "author": "Book3 Author",
+      "author": "Book Author",
       "category": "Romance",
-      "price": 55,
-      "cover": "https://placehold.co/400x600/red/white",
-      "reserved": true
+      "price": 50,
+      "cover": "https://placehold.co/400x600/yellow/white",
+      "reserved": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

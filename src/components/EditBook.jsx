@@ -11,7 +11,6 @@ const EditBook = () => {
 
   const [ categories, setCategories ] = useState([]);
   const navigate = useNavigate();
-
   const { bookid } = useParams("bookId");
 
   const {

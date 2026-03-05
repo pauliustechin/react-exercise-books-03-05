@@ -1,27 +1,15 @@
-import deleteBook from "../services/deleteService";
 import toast from "react-hot-toast";
 import DeleteModal from "./DeleteModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import updateBook from "../services/updateService";
 import { useNavigate } from "react-router";
+import { getAllBooks } from "../services/getService";
 
-const BookInfo = ({ book }) => {
+const BookInfo = ({ book, setBooks }) => {
+
   const { id, title, author, reserved, category } = book;
-
   const [isOpen, setOpen] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const del = () => {
-      if (confirmDelete) {
-        deleteBook(id);
-        toast.success("Book deleted successfully");
-        setConfirmDelete(false);
-      }
-    };
-    del();
-  }, [confirmDelete]);
 
   const handleReservation = async () => {
     const data = {
@@ -32,8 +20,11 @@ const BookInfo = ({ book }) => {
 
     if (updatedBook) {
       toast.success("Book updated successfully");
+      const books = await getAllBooks();
+      setBooks(() => books);
     }
   };
+
 
   const handleEdit = () => {
     navigate(`/addbook/${id}`);
@@ -54,14 +45,15 @@ const BookInfo = ({ book }) => {
         <DeleteModal
           isOpen={isOpen}
           setOpen={setOpen}
-          setConfirmDelete={setConfirmDelete}
+          id={id}
+          setBooks={setBooks}
         />
-          <button
-            className="my-buttons bg-none bg-teal-600 h-full"
-            onClick={handleEdit}
-          >
-            Edit
-          </button>
+        <button
+          className="my-buttons bg-none bg-teal-600 h-full"
+          onClick={handleEdit}
+        >
+          Edit
+        </button>
       </div>
       <div id="bottom-div"></div>
     </>

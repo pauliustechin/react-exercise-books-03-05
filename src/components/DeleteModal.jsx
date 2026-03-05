@@ -5,8 +5,10 @@ import {
   DialogTitle,
   DialogBackdrop,
 } from "@headlessui/react";
+import deleteBook from "../services/deleteService";
 
-function DeleteModal({ isOpen, setOpen, setConfirmDelete }) {
+
+function DeleteModal({ isOpen, setOpen, id, setBooks }) {
   function open() {
     setOpen(true);
   }
@@ -15,7 +17,9 @@ function DeleteModal({ isOpen, setOpen, setConfirmDelete }) {
     setOpen(false);
   }
 
-
+  const handleDelete = () => {
+    deleteBook(id, setBooks);
+  }
 
   return (
     <>
@@ -34,7 +38,7 @@ function DeleteModal({ isOpen, setOpen, setConfirmDelete }) {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-white/80 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-80 max-w-md rounded-xl bg-white/80 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
               <DialogTitle
                 as="h3"
@@ -46,8 +50,8 @@ function DeleteModal({ isOpen, setOpen, setConfirmDelete }) {
                 <Button
                   className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
                   onClick={() => {
-                    setConfirmDelete(true);
                     close();
+                    handleDelete();
                   }}
                 >
                   Confirm
