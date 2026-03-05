@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router";
+import React from "react";
 import { HomePage } from "./pages/HomePage";
 import { useEffect, useState } from "react";
 import AddBook from "./pages/AddBook";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { getAllBooks } from "./services/getService";
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
   );
 
   return (
-    <>
+    <React.Fragment>
         <Header />
         <Routes>
           <Route
@@ -32,7 +34,8 @@ function App() {
           ></Route>
         </Routes>
         <Footer />
-    </>
+        <Toaster position='top-center'/>
+    </React.Fragment>
   );
 }
 

@@ -44,15 +44,6 @@
       "price": 55,
       "cover": "https://placehold.co/400x600/red/white",
       "reserved": false
-    },
-    {
-      "id": "fb22",
-      "title": "asdfas",
-      "author": "asdf asdfasdf",
-      "category": "Romance",
-      "price": "55",
-      "cover": "https://placehold.co/400x600/purple/white",
-      "reserved": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

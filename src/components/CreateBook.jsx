@@ -3,6 +3,7 @@ import { getAllBooks } from "../services/getService";
 import { useEffect, useState } from "react";
 import createBook from "../services/postService";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const CreateBook = () => {
 
@@ -45,6 +46,7 @@ const CreateBook = () => {
     if(response){
       reset();
       navigate("/");
+      toast.success("yeeee")
     }
   };
 

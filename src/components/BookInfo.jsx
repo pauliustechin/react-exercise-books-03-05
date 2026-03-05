@@ -1,5 +1,29 @@
+import deleteBook from "../services/deleteService";
+import toast from "react-hot-toast";
+import DeleteModal from "./DeleteModal";
+import { useEffect, useState } from "react";
+
 const BookInfo = ({ book }) => {
-  const { title, author, reserved, category } = book;
+  const { id, title, author, reserved, category } = book;
+
+  const [isOpen, setOpen] = useState(false);
+
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  useEffect(() => {
+
+    const del = () => {
+      if (confirmDelete) {
+        deleteBook(id);
+        toast.success("Book deleted successfully");
+        setConfirmDelete(false);
+      }
+    };
+
+    del();
+
+  }, [confirmDelete]);
+
   return (
     <div className="w-full flex gap-4 p-2 rounded shadow-lg bg-gray-400">
       <p className="rounded p-2 w-40 bg-white shadow-2xl">{title}</p>
@@ -10,7 +34,11 @@ const BookInfo = ({ book }) => {
       >
         {reserved ? "Grąžinti" : "Rezervuoti"}
       </button>
-      <button className="my-buttons bg-none bg-red-500">Delete</button>
+      <DeleteModal
+        isOpen={isOpen}
+        setOpen={setOpen}
+        setConfirmDelete={setConfirmDelete}
+      />
     </div>
   );
 };
