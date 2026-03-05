@@ -12,7 +12,8 @@ const AddBook = ({ books, setBooks }) => {
       <div>
         <CreateBook />
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 bg-white p-8 shadow-2xl">
+        <h1 className="text-2xl font-bold">Library: </h1>
         {books && books.map((book) => <BooksInfo key={book.id} book={book}/>)}
       </div>
     </div>

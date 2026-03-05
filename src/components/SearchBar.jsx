@@ -38,7 +38,8 @@ const SearchBar = ({ setBooks, books }) => {
   }
 
   return (
-    <div className="w-full p-7 bg-white shadow-2xl rounded-xl">
+    <div className="w-full p-3 bg-white shadow-2xl rounded-xl">
+      <h1 className="mb-4 font-bold text-2xl">Search book by title</h1>
       <form className="flex justify-center" onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"

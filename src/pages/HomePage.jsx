@@ -11,7 +11,7 @@ export const HomePage = ({ books, setBooks }) => {
 
   return (
     <div className="h-full">
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] m-10 place-items-center gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] m-10 place-items-center gap-6">
         {books && books.map((book) => <BookCard book={book} key={book.id}/>)}
       </div>
     </div>

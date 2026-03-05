@@ -8,22 +8,30 @@ import { getAllBooks } from "./services/getService";
 import "./App.css";
 
 function App() {
+  const [books, setBooks] = useState();
 
-  const [ books, setBooks ] = useState();
-
-  useEffect(() => async () => {
-    const booksFromDb = await getAllBooks();
-    setBooks(booksFromDb)
-  }, [])
+  useEffect(
+    () => async () => {
+      const booksFromDb = await getAllBooks();
+      setBooks(booksFromDb);
+    },
+    [],
+  );
 
   return (
     <>
-      <Header />
-      <Routes>
-        <Route index element={<HomePage books={books} setBooks={setBooks} />}></Route>
-        <Route path="/addbook" element={<AddBook books={books} setBooks={setBooks} />}></Route>
-      </Routes>
-      <Footer />
+        <Header />
+        <Routes>
+          <Route
+            index
+            element={<HomePage books={books} setBooks={setBooks} />}
+          ></Route>
+          <Route
+            path="/addbook"
+            element={<AddBook books={books} setBooks={setBooks} />}
+          ></Route>
+        </Routes>
+        <Footer />
     </>
   );
 }

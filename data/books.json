@@ -1,22 +1,59 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Book 1 title test",
-      "author": "Author of book nr 1",
+      "id": "1",
+      "title": "Fantasy Book",
+      "author": "Book1 Author",
       "category": "Fantasy",
       "price": 50,
       "cover": "https://placehold.co/400x600/orange/white",
       "reserved": false
     },
     {
-      "id": 2,
-      "title": "Book 2 title search",
-      "author": "Author of book nr 2",
+      "id": "2",
+      "title": "Mystery Book",
+      "author": "Book2 Author",
       "category": "Mystery",
       "price": 40,
       "cover": "https://placehold.co/400x600/blue/white",
       "reserved": false
+    },
+    {
+      "id": "3",
+      "title": "Romance Book",
+      "author": "Book3 Author",
+      "category": "Romance",
+      "price": 45,
+      "cover": "https://placehold.co/400x600/green/white",
+      "reserved": false
+    },
+    {
+      "id": "4",
+      "title": "Mystery Book2",
+      "author": "Book2 Author",
+      "category": "Mystery",
+      "price": 60,
+      "cover": "https://placehold.co/400x600/purple/white",
+      "reserved": false
+    },
+    {
+      "id": "5",
+      "title": "Romance Book2",
+      "author": "Book3 Author",
+      "category": "Romance",
+      "price": 55,
+      "cover": "https://placehold.co/400x600/red/white",
+      "reserved": false
+    },
+    {
+      "id": "fb22",
+      "title": "asdfas",
+      "author": "asdf asdfasdf",
+      "category": "Romance",
+      "price": "55",
+      "cover": "https://placehold.co/400x600/purple/white",
+      "reserved": false
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
