@@ -4,7 +4,7 @@ const Footer = () => {
   const year = date.getFullYear();
 
   return (
-    <footer className="bg-slate-700 font-bold text-white p-5 rounded">
+    <footer id="footer" className="bg-slate-700 font-bold text-white p-5 rounded mb-[0%]">
       <p>Paulius Semaška {year}</p>
     </footer>
   )

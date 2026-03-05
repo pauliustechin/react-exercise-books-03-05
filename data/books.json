@@ -5,14 +5,14 @@
       "title": "Fantasy Book",
       "author": "Book1 Author",
       "category": "Fantasy",
-      "price": 50,
-      "cover": "https://placehold.co/400x600/orange/white",
+      "price": 55,
+      "cover": "https://placehold.co/400x600/blue/white",
       "reserved": false
     },
     {
       "id": "2",
       "title": "Mystery Book",
-      "author": "Book2 Author",
+      "author": "Book Author",
       "category": "Mystery",
       "price": 40,
       "cover": "https://placehold.co/400x600/blue/white",
@@ -43,7 +43,25 @@
       "category": "Romance",
       "price": 55,
       "cover": "https://placehold.co/400x600/red/white",
+      "reserved": true
+    },
+    {
+      "id": "eb0f",
+      "title": "aDSasd",
+      "author": "asdf asdfasdf",
+      "category": "Mystery",
+      "price": "54",
+      "cover": "https://placehold.co/400x600/purple/white",
       "reserved": false
+    },
+    {
+      "id": "9a23",
+      "title": "asfd",
+      "author": "asdf asdf",
+      "category": "Romance",
+      "price": "5",
+      "cover": "https://placehold.co/400x600/purple/white",
+      "reserved": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

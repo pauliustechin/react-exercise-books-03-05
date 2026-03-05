@@ -11,7 +11,7 @@ const BookCard = ({ book }) => {
       <p className="font-bold">{title}</p>
       <p>{author}</p>
       <p>{price} $</p>
-      <p className={`font-bold ${reserved ? "text-red" : "text-green-600"}`}>
+      <p className={`font-bold ${reserved ? "text-red-600" : "text-green-600"}`}>
         {reserved ? "Nėra" : "Turime"}
       </p>
       <BookDetailsModal 

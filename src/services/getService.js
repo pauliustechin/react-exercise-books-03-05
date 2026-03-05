@@ -9,3 +9,10 @@ export const getAllBooks = async () => {
   return data;
 
 }
+
+export const getBookById = async (id) => {
+
+  const { data } = await axios.get(`${API_URL}/${id}`);
+
+  return data;
+}
