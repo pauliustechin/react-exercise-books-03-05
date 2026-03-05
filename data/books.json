@@ -14,7 +14,7 @@
       "title": "Mystery Book",
       "author": "Book Author",
       "category": "Mystery",
-      "price": 40,
+      "price": "45",
       "cover": "https://placehold.co/400x600/green/white",
       "reserved": true
     },
@@ -24,7 +24,7 @@
       "author": "Book Author",
       "category": "Romance",
       "price": "69",
-      "cover": "https://placehold.co/400x600/yellow/white",
+      "cover": "https://placehold.co/400x600/orange/white",
       "reserved": true
     },
     {
@@ -42,7 +42,7 @@
       "author": "Book Author",
       "category": "Romance",
       "price": 50,
-      "cover": "https://placehold.co/400x600/yellow/white",
+      "cover": "https://placehold.co/400x600/red/white",
       "reserved": false
     }
   ],

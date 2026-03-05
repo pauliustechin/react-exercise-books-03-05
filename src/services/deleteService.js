@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAllBooks } from './getService';
+import toast from 'react-hot-toast';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -9,6 +10,7 @@ const deleteBook = async (id, setBooks) => {
     if(deletedBook){
       const books = await getAllBooks();
       setBooks(books);
+      toast.success("Book deleted successfully")
     }
   } catch (error) {
     console.error(error)
