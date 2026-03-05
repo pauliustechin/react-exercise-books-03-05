@@ -44,24 +44,6 @@
       "price": 55,
       "cover": "https://placehold.co/400x600/red/white",
       "reserved": true
-    },
-    {
-      "id": "eb0f",
-      "title": "aDSasd",
-      "author": "asdf asdfasdf",
-      "category": "Mystery",
-      "price": "54",
-      "cover": "https://placehold.co/400x600/purple/white",
-      "reserved": false
-    },
-    {
-      "id": "9a23",
-      "title": "asfd",
-      "author": "asdf asdf",
-      "category": "Romance",
-      "price": "5",
-      "cover": "https://placehold.co/400x600/purple/white",
-      "reserved": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
