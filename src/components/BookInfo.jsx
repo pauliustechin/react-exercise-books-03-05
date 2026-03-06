@@ -46,12 +46,13 @@ const BookInfo = ({ book, setBooks }) => {
           id={id}
           setBooks={setBooks}
         />
-        <button
-          className="my-buttons bg-none bg-teal-600 h-full"
-          onClick={handleEdit}
-        >
-          Edit
-        </button>
+
+          <button
+            className="my-buttons bg-none bg-teal-600 h-full"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
       </div>
       <div id="bottom-div"></div>
     </>

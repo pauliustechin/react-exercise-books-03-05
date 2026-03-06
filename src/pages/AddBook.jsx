@@ -15,7 +15,7 @@ const AddBook = () => {
         <SearchBar setBooks={setBooks} books={books}></SearchBar>
       </div>
       <div>
-        <CreateBook books={books} setBooks={setBooks}/>
+        <CreateBook books={books}/>
       </div>
       <Outlet />
       <div className="flex flex-col gap-4 bg-white p-8 shadow-2xl">

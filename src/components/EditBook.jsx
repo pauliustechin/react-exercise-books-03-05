@@ -57,7 +57,9 @@ const EditBook = () => {
 
   return (
     <div className="w-full p-3 bg-white shadow-2xl rounded-xl">
-      <h1 className="mb-4 font-bold text-2xl">Edit a book</h1>
+      <h1 className="mb-4 font-bold text-2xl">
+        Edit a book
+      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] text-left gap-4"
@@ -170,8 +172,7 @@ const EditBook = () => {
           />
           {errors.cover && <p className="error-msg">{errors.cover.message}</p>}
         </div>
-
-        <button className="my-buttons h-10 w-38 self-end">Edit a book</button>
+          <button className="my-buttons h-10 w-38 self-end">Edit a book</button>
       </form>
     </div>
   );

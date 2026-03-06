@@ -40,6 +40,7 @@ const CreateBook = ({ books }) => {
     };
 
     const savedBook = await createBook(sendData);
+    console.log(savedBook)
 
     if (savedBook) {
       reset();
