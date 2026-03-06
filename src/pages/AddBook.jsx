@@ -2,8 +2,12 @@ import SearchBar from "../components/SearchBar";
 import BooksInfo from "../components/BookInfo";
 import CreateBook from "../components/CreateBook";
 import { Outlet } from "react-router";
+import { useContext } from "react";
+import { BookContext } from "../store/BookContext";
 
-const AddBook = ({ books, setBooks }) => {
+const AddBook = () => {
+  
+  const [books, setBooks] = useContext(BookContext);
 
   return (
     <div className="h-full flex flex-col gap-8 overflow-scroll p-4">
@@ -11,9 +15,9 @@ const AddBook = ({ books, setBooks }) => {
         <SearchBar setBooks={setBooks} books={books}></SearchBar>
       </div>
       <div>
-        <CreateBook />
+        <CreateBook books={books} setBooks={setBooks}/>
       </div>
-      <Outlet></Outlet>
+      <Outlet />
       <div className="flex flex-col gap-4 bg-white p-8 shadow-2xl">
         <h1 className="text-2xl font-bold">Library: </h1>
         {books &&

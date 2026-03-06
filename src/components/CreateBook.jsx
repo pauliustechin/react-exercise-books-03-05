@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
-import { getAllBooks } from "../services/getService";
 import { useEffect, useState } from "react";
 import createBook from "../services/postService";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
-const CreateBook = () => {
+const CreateBook = ({ books }) => {
 
-  const [ categories, setCategories ] = useState([]);
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   const {
@@ -18,35 +17,34 @@ const CreateBook = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(
-    () => async () => {
-      const books = await getAllBooks();
-      const tempArr = [];
+  useEffect(() => {
 
-      books.forEach(book => {
-        tempArr.push(book.category)
-      })
-
-                                      // kad nesidubliuotu categories
-      setCategories((prev) => [...prev, ...Array.from(new Set(tempArr))])
-    },
-    [],
-  );
-
-
-  const onSubmit = async (formData) => {
-    
-    const sendData = {
-      ...formData,
-      reserved: false
+    function getCategories(){
+      if (books) {
+        const tempArr = [];
+        books.forEach((book) => {
+          tempArr.push(book.category);
+        });
+        setCategories(() => [...Array.from(new Set(tempArr))]);
+      }
     }
 
-    const response = createBook(sendData);
+    getCategories();
 
-    if(response){
+  }, [books]);
+
+  const onSubmit = async (formData) => {
+    const sendData = {
+      ...formData,
+      reserved: false,
+    };
+
+    const savedBook = await createBook(sendData);
+
+    if (savedBook) {
       reset();
       navigate("/");
-      toast.success("Book added successfully")
+      toast.success("Book added successfully");
     }
   };
 
@@ -135,8 +133,8 @@ const CreateBook = () => {
             {...register("price", {
               required: "Cannot be empty",
               validate: (value) => {
-                return value > 0 || "Price must be over 0"
-              }
+                return value > 0 || "Price must be over 0";
+              },
             })}
             onChange={() => {
               clearErrors("price");
@@ -154,9 +152,10 @@ const CreateBook = () => {
             {...register("cover", {
               required: "Cannot be empty",
               pattern: {
-                value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
-                message: "URL is invalid"
-              }
+                value:
+                  /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
+                message: "URL is invalid",
+              },
             })}
             onChange={() => {
               clearErrors("cover");
@@ -167,7 +166,6 @@ const CreateBook = () => {
 
         <button className="my-buttons h-10 w-38 self-end">Add a book</button>
       </form>
-      
     </div>
   );
 };

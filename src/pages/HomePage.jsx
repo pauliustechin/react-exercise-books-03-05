@@ -1,12 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
 import { getAllBooks } from "../services/getService";
 
-export const HomePage = ({ books, setBooks }) => {
 
-  useEffect(() => async () => {
-    const allBooks = await getAllBooks();
-    setBooks(allBooks);
+export const HomePage = () => {
+
+  const [ books, setBooks ] = useState();
+
+  useEffect(() => {
+
+    async function getBooks(){
+      const booksFromDb = await getAllBooks();
+      setBooks(booksFromDb)
+    }
+
+    getBooks();
+
   }, [])
 
   return (

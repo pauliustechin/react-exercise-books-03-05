@@ -1,17 +1,18 @@
 import { useForm } from "react-hook-form";
-import { getAllBooks } from "../services/getService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import updateBook from "../services/updateService";
 import { getBookById } from "../services/getService";
 import { useParams } from "react-router";
+import { useContext } from "react";
+import { BookContext } from "../store/BookContext";
 
 const EditBook = () => {
-
-  const [ categories, setCategories ] = useState([]);
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const { bookid } = useParams("bookId");
+  const [books] = useContext(BookContext);
 
   const {
     register,
@@ -21,40 +22,37 @@ const EditBook = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(
-    () => async () => {
-      const books = await getAllBooks();
-      const tempArr = [];
+  useEffect(() => {
+    function getCategories() {
+      if (books) {
+        const tempArr = [];
+        books.forEach((book) => {
+          tempArr.push(book.category);
+        });
+        setCategories(() => [...Array.from(new Set(tempArr))]);
+      }
+    }
 
-      books.forEach(book => {
-        tempArr.push(book.category)
-      })
-
-                                      // kad nesidubliuotu categories
-      setCategories((prev) => [...prev, ...Array.from(new Set(tempArr))])
-    },
-    [],
-  );
+    getCategories();
+  }, [books]);
 
   useEffect(() => {
-    
     const getData = async () => {
-      const book = await getBookById(bookid);
-      reset(book)
-    }
-    getData()
+      if (bookid) {
+        const book = await getBookById(bookid);
+        reset(book);
+      }
+    };
 
-  }, [bookid])
-
+    getData();
+  }, [bookid, reset]);
 
   const onSubmit = async (formData) => {
-
-    const updateResponse = await updateBook(bookid, formData);
-    if(updateResponse){
-      navigate("/")
-      toast.success("Book updated successfully")
+    const updatedBook = await updateBook(bookid, formData);
+    if (updatedBook) {
+      navigate("/");
+      toast.success("Book updated successfully");
     }
-
   };
 
   return (
@@ -142,8 +140,8 @@ const EditBook = () => {
             {...register("price", {
               required: "Cannot be empty",
               validate: (value) => {
-                return value > 0 || "Price must be over 0"
-              }
+                return value > 0 || "Price must be over 0";
+              },
             })}
             onChange={() => {
               clearErrors("price");
@@ -161,9 +159,10 @@ const EditBook = () => {
             {...register("cover", {
               required: "Cannot be empty",
               pattern: {
-                value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
-                message: "URL is invalid"
-              }
+                value:
+                  /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
+                message: "URL is invalid",
+              },
             })}
             onChange={() => {
               clearErrors("cover");
@@ -172,9 +171,8 @@ const EditBook = () => {
           {errors.cover && <p className="error-msg">{errors.cover.message}</p>}
         </div>
 
-        <button className="my-buttons h-10 w-38 self-end">Add a book</button>
+        <button className="my-buttons h-10 w-38 self-end">Edit a book</button>
       </form>
-      
     </div>
   );
 };

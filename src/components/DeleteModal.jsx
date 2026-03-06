@@ -6,9 +6,14 @@ import {
   DialogBackdrop,
 } from "@headlessui/react";
 import deleteBook from "../services/deleteService";
+import { useContext } from "react";
+import { BookContext } from "../store/BookContext";
 
 
-function DeleteModal({ isOpen, setOpen, id, setBooks }) {
+function DeleteModal({ isOpen, setOpen, id }) {
+
+  const [, setBooks ] = useContext(BookContext);
+
   function open() {
     setOpen(true);
   }

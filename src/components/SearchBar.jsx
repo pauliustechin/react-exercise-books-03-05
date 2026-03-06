@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-const SearchBar = ({ setBooks, books }) => {
+const SearchBar = ({ books, setBooks }) => {
   const {
     register,
     handleSubmit,
@@ -11,17 +11,17 @@ const SearchBar = ({ setBooks, books }) => {
   } = useForm({
     defaultValues: {
       query: "",
-    }, 
+    },
   });
 
-  const [ error, setError ] = useState("");
+  const [error, setError] = useState("");
 
   const onSubmit = ({ title }) => {
 
     const query = title.toLowerCase();
 
     try {
-      const booksFind = books.filter((book) =>
+        const booksFind = books.filter((book) =>
         book.title.toLowerCase().includes(query),
       );
 
@@ -29,13 +29,12 @@ const SearchBar = ({ setBooks, books }) => {
 
       setBooks(booksFind);
       reset();
-
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setError(error.message);
       reset();
     }
-  }
+  };
 
   return (
     <div className="w-full p-3 bg-white shadow-2xl rounded-xl">
@@ -48,11 +47,11 @@ const SearchBar = ({ setBooks, books }) => {
           placeholder="search by title"
           {...register("title", {
             required: "Enter some value",
-            minLength: { value: 3, message: "Enter at least 3 characters"}
+            minLength: { value: 3, message: "Enter at least 3 characters" },
           })}
           onChange={() => {
             clearErrors("title");
-            setError(() => "")
+            setError(() => "");
           }}
         />
         <button type="submit" className="my-buttons shadow-2xl">
@@ -60,7 +59,9 @@ const SearchBar = ({ setBooks, books }) => {
         </button>
       </form>
       {error && <p className="error-msg mt-4">{error}</p>}
-      {errors?.title && <p className="error-msg mt-4">{errors?.title.message}</p>}
+      {errors?.title && (
+        <p className="error-msg mt-4">{errors?.title.message}</p>
+      )}
     </div>
   );
 };

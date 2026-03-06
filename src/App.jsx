@@ -1,44 +1,43 @@
 import { Routes, Route } from "react-router";
-import React from "react";
 import { HomePage } from "./pages/HomePage";
 import { useEffect, useState } from "react";
 import AddBook from "./pages/AddBook";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { getAllBooks } from "./services/getService";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 import EditBook from "./components/EditBook";
+import { BookContext } from "./store/BookContext";
+import { getAllBooks } from "./services/getService";
 
 function App() {
+
   const [books, setBooks] = useState();
 
-  useEffect(
-    () => async () => {
+  useEffect(() => 
+    async () => {
       const booksFromDb = await getAllBooks();
       setBooks(booksFromDb);
-    },
-    [],
-  );
+    }
+  , []);
 
   return (
     <>
-        <Header />
+      <Header />
+      <BookContext.Provider value={[books, setBooks]}>
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage books={books} setBooks={setBooks} />}
-          ></Route>
+          <Route path="/" element={<HomePage />}></Route>
 
           <Route
             path="/addbook"
-            element={<AddBook books={books} setBooks={setBooks} />}
+            element={<AddBook />}
           >
             <Route path="/addbook/:bookid" element={<EditBook />} />
           </Route>
         </Routes>
-        <Footer />
-        <Toaster position="top-center" />
+      </BookContext.Provider>
+      <Footer />
+      <Toaster position="top-center" />
     </>
   );
 }

@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 const API_URL = import.meta.env.VITE_API_URL;
 
 const deleteBook = async (id, setBooks) => {
+
   try {
     const deletedBook = await axios.delete(`${API_URL}/${id}`);
     if(deletedBook){

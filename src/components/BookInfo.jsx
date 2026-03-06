@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 import { getAllBooks } from "../services/getService";
 
 const BookInfo = ({ book, setBooks }) => {
-
   const { id, title, author, reserved, category } = book;
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +23,6 @@ const BookInfo = ({ book, setBooks }) => {
       setBooks(() => books);
     }
   };
-
 
   const handleEdit = () => {
     navigate(`/addbook/${id}`);
